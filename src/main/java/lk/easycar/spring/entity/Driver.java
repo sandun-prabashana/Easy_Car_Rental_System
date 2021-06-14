@@ -15,15 +15,11 @@ import javax.persistence.OneToOne;
 @Data
 public class Driver {
     @Id
-    private String DId;
-
-    @OneToOne
-    @JoinColumn(name = "LID", referencedColumnName = "LID", insertable = false, updatable = false)
-    private Login login;
-
+    private String DNic;
     private String Name;
     private String Address;
     private String No;
-    private String Nic;
     private String Status;
+    private String Email;
+    private String Password;
 }

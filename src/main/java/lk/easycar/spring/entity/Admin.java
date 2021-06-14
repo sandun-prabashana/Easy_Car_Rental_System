@@ -15,14 +15,10 @@ import javax.persistence.OneToOne;
 @Data
 public class Admin {
     @Id
-    private String AID;
-
-    @OneToOne
-    @JoinColumn(name = "LID", referencedColumnName = "LId", insertable = false, updatable = false)
-    private Login login;
-
+    private String ANic;
     private String Name;
     private String Address;
     private String No;
-    private String Nic;
+    private String Email;
+    private String Password;
 }

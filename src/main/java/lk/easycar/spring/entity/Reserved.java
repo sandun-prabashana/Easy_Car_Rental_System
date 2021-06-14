@@ -14,10 +14,10 @@ import java.util.List;
 @Data
 public class Reserved {
     @Id
-    private String REId;
+    private String REID;
 
     @ManyToOne
-    @JoinColumn(name = "CID", referencedColumnName = "CID", insertable = false, updatable = false)
+    @JoinColumn(name = "CNic", referencedColumnName = "CNic", insertable = false, updatable = false)
     private Customer customer;
 
     @OneToMany(mappedBy = "reserved", cascade = CascadeType.ALL)

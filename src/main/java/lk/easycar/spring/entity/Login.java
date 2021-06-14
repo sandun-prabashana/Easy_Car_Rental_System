@@ -14,9 +14,7 @@ import javax.persistence.Id;
 @Data
 public class Login {
     @Id
-    private String LId;
     private String Email;
     private String Password;
-    private String Type;
 
 }

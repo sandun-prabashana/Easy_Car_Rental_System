@@ -26,7 +26,6 @@ public class Vehicle {
         private double Monthly_Rate;
         private double Free_Mileage;
         private double Extra_Km_Price;
-        private String Reg_Number;
         private String Color;
         private int Total_Km;
         private String Status;

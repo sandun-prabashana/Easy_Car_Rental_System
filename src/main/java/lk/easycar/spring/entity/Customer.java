@@ -15,13 +15,7 @@ import javax.persistence.OneToOne;
 @Data
 public class Customer {
     @Id
-    private String CID;
-
-    @OneToOne
-    @JoinColumn(name = "LID", referencedColumnName = "LID", insertable = false, updatable = false)
-    private Login login;
-
-    private String ID_No;
+    private String CNic;
     private String DL_No;
     private String Name;
     private String Address;
@@ -30,4 +24,5 @@ public class Customer {
     private String Password;
     private String ID_Location;
     private String DL_Location;
+
 }
