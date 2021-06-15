@@ -4,6 +4,7 @@ import lk.easycar.spring.dto.CustomerDTO;
 import lk.easycar.spring.dto.DriverDTO;
 import lk.easycar.spring.entity.Customer;
 import lk.easycar.spring.entity.Driver;
+import lk.easycar.spring.entity.Vehicle;
 import lk.easycar.spring.exception.ValidateException;
 import lk.easycar.spring.repo.CustomerRepo;
 import lk.easycar.spring.repo.DriverRepo;
@@ -40,5 +41,12 @@ public class DriverServiceImpl implements DriverService {
         List<Driver> all = driverRepo.findAll();
         return mapper.map(all, new TypeToken<ArrayList<DriverDTO>>() {
         }.getType());
+    }
+
+    @Override
+    public void updateDriver(DriverDTO driverDTO) {
+        if (driverRepo.existsById(driverDTO.getDNic())) {
+            driverRepo.save(mapper.map(driverDTO, Driver.class));
+        }
     }
 }

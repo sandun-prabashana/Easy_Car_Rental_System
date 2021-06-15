@@ -2,6 +2,7 @@ package lk.easycar.spring.controller;
 
 import lk.easycar.spring.dto.CustomerDTO;
 import lk.easycar.spring.dto.DriverDTO;
+import lk.easycar.spring.dto.VehicleDTO;
 import lk.easycar.spring.exception.NotFoundException;
 import lk.easycar.spring.service.CustomerService;
 import lk.easycar.spring.service.DriverService;
@@ -35,5 +36,14 @@ public class DriverController {
     public ResponseEntity getAllDrivers() {
         ArrayList<DriverDTO> allDrivers = service.getAllDrivers();
         return new ResponseEntity(new StandardResponse("200", "Done", allDrivers), HttpStatus.OK);
+    }
+
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity updateDriver(@RequestBody DriverDTO driverDTO) {
+        if (driverDTO.getDNic().trim().length() <= 0) {
+            throw new NotFoundException("No id provided to update");
+        }
+        service.updateDriver(driverDTO);
+        return new ResponseEntity(new StandardResponse("200", "Done", driverDTO), HttpStatus.OK);
     }
 }
