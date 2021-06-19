@@ -10,4 +10,8 @@ public interface DriverService {
     void addDriver(DriverDTO driverDTO);
     ArrayList<DriverDTO> getAllDrivers();
     void updateDriver(DriverDTO driverDTO);
+
+    String GetDriverPassword(String id);
+
+    String GetPasswordForDNic(String id);
 }

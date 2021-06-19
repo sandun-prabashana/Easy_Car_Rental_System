@@ -13,7 +13,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 @RestController
@@ -58,4 +62,27 @@ public class VechicleController {
         service.updateVehicle(vehicleDTO);
         return new ResponseEntity(new StandardResponse("200", "Done", vehicleDTO), HttpStatus.OK);
     }
+
+//    @PostMapping("/uploadfile")
+//    public ResponseEntity uploadImage(@RequestPart("file") MultipartFile multipartFile) {
+//
+//        System.out.println(multipartFile.getOriginalFilename());
+//        try {
+//            String projectpath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
+//
+//            File uploadsDir = new File(projectpath + "/uploads");
+//            uploadsDir.mkdir();
+//
+//            multipartFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + multipartFile.getOriginalFilename()));
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        String filepath = "E:\\Easy_Car_System\\Spring Final Project\\target\\Spring Final Project-1.0.0\\uploads\\" + multipartFile.getOriginalFilename();
+//
+//        StandardResponse standardResponse = new StandardResponse("200", "Success!", filepath);
+//        return new ResponseEntity(standardResponse, HttpStatus.OK);
+//    }
 }

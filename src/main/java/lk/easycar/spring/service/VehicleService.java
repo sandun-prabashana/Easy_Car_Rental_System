@@ -16,4 +16,6 @@ public interface VehicleService {
     VehicleDTO searchVehicle(String vid);
 
     void updateVehicle(VehicleDTO vehicleDTO);
+
+
 }

@@ -1,7 +1,9 @@
 package lk.easycar.spring.service.impl;
 
 import lk.easycar.spring.dto.CustomerDTO;
+import lk.easycar.spring.dto.VehicleDTO;
 import lk.easycar.spring.entity.Customer;
+import lk.easycar.spring.entity.Vehicle;
 import lk.easycar.spring.exception.ValidateException;
 import lk.easycar.spring.repo.CustomerRepo;
 import lk.easycar.spring.service.CustomerService;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -38,4 +41,19 @@ public class CustomerServiceImpl implements CustomerService {
         return mapper.map(all, new TypeToken<ArrayList<CustomerDTO>>() {
         }.getType());
     }
+
+    @Override
+    public boolean AlreadyExists(String id) {
+        return customerRepo.existsById(id);
+    }
+
+    @Override
+    public String getPassword(String id) {
+        return customerRepo.getPassword(id);
+    }
+
+//
+
+
 }
+

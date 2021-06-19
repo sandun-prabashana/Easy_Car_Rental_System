@@ -49,4 +49,14 @@ public class DriverServiceImpl implements DriverService {
             driverRepo.save(mapper.map(driverDTO, Driver.class));
         }
     }
+
+    @Override
+    public String GetDriverPassword(String id) {
+        return driverRepo.getPassword(id);
+    }
+
+    @Override
+    public String GetPasswordForDNic(String id) {
+        return driverRepo.getPasswordforNic(id);
+    }
 }

@@ -18,9 +18,12 @@ public class RequestDetail {
     @JoinColumn(name = "CNic", referencedColumnName = "CNic", insertable = false, updatable = false)
     private Customer customer;
 
-
     private String Vid;
-    private String DriverStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "DNic", referencedColumnName = "DNic", insertable = false, updatable = false)
+    private Driver driver;
+
     private String BankSlip;
     private String PickupDate;
     private String ReturnDate;

@@ -46,4 +46,16 @@ public class DriverController {
         service.updateDriver(driverDTO);
         return new ResponseEntity(new StandardResponse("200", "Done", driverDTO), HttpStatus.OK);
     }
+
+    @GetMapping(path = "go/{email}")
+    public ResponseEntity searchPassword(@PathVariable String email) {
+        String password = service.GetDriverPassword(email);
+        return new ResponseEntity(new StandardResponse("200", "Done", password), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "goNic/{email}")
+    public ResponseEntity searchPasswordForNic(@PathVariable String email) {
+        String password = service.GetPasswordForDNic(email);
+        return new ResponseEntity(new StandardResponse("200", "Done", password), HttpStatus.OK);
+    }
 }
