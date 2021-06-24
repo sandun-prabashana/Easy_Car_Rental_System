@@ -15,16 +15,17 @@ public class RequestDetail {
     private String RID;
 
     @ManyToOne
-    @JoinColumn(name = "CNic", referencedColumnName = "CNic", insertable = false, updatable = false)
+    @JoinColumn(name = "CNic")
     private Customer customer;
 
     private String Vid;
 
     @ManyToOne
-    @JoinColumn(name = "DNic", referencedColumnName = "DNic", insertable = false, updatable = false)
+    @JoinColumn(name = "DNic")
     private Driver driver;
 
     private String BankSlip;
+    private String RequestDate;
     private String PickupDate;
     private String ReturnDate;
     private String RateType;

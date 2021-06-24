@@ -10,5 +10,12 @@ public interface CustomerRepo extends JpaRepository<Customer,String> {
     @Query(value = "select c.Password from Customer c where c.Email_Address=?1")
     String getPassword(String id);
 
+    @Query(value = "select c from Customer c where c.Email_Address=?1")
+    Customer getCustomerDetail(String id);
+
+    @Query(value = "SELECT COUNT(cnic) FROM Customer", nativeQuery = true)
+    String userCount();
+
+
 
 }

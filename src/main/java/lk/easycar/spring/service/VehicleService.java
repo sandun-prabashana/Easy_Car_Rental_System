@@ -3,8 +3,10 @@ package lk.easycar.spring.service;
 import lk.easycar.spring.dto.AdminDTO;
 import lk.easycar.spring.dto.DriverDTO;
 import lk.easycar.spring.dto.VehicleDTO;
+import lk.easycar.spring.entity.Driver;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface VehicleService {
     void addVehicle(VehicleDTO vehicleDTO);
@@ -17,5 +19,8 @@ public interface VehicleService {
 
     void updateVehicle(VehicleDTO vehicleDTO);
 
+    void updateStatus(String state,String id);
+
+    String vehicleCount(String state);
 
 }

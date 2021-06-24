@@ -2,6 +2,7 @@ package lk.easycar.spring.service.impl;
 
 import lk.easycar.spring.dto.CustomerDTO;
 import lk.easycar.spring.dto.DriverDTO;
+import lk.easycar.spring.dto.VehicleDTO;
 import lk.easycar.spring.entity.Customer;
 import lk.easycar.spring.entity.Driver;
 import lk.easycar.spring.entity.Vehicle;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -59,4 +61,32 @@ public class DriverServiceImpl implements DriverService {
     public String GetPasswordForDNic(String id) {
         return driverRepo.getPasswordforNic(id);
     }
+
+    @Override
+    public DriverDTO searchDriver(String did) {
+        Optional<Driver> driver = driverRepo.findById(did);
+        if (driver.isPresent()) {
+            return mapper.map(driver.get(), DriverDTO.class);
+        }
+        return null;
+    }
+
+    @Override
+    public void updateStatus(String status, String did) {
+        driverRepo.updateStatus(status,did);
+    }
+
+    @Override
+    public DriverDTO searchDriverbyEmail(String email) {
+        Driver d= driverRepo.getDriverDetailByEmail(email);
+        return new DriverDTO(d.getAddress(),d.getDNic(),d.getEmail(),d.getName(),
+                d.getNo(),d.getPassword(),d.getStatus());
+    }
+
+    @Override
+    public String DriverCount(String state) {
+        return driverRepo.DriverCount(state);
+    }
 }
+
+

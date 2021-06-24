@@ -54,7 +54,7 @@ public class VechicleController {
         return new ResponseEntity(new StandardResponse("200", "Done", null), HttpStatus.OK);
     }
 
-    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/update")
     public ResponseEntity updateDriver(@RequestBody VehicleDTO vehicleDTO) {
         if (vehicleDTO.getVID().trim().length() <= 0) {
             throw new NotFoundException("No id provided to update");
@@ -85,4 +85,17 @@ public class VechicleController {
 //        StandardResponse standardResponse = new StandardResponse("200", "Success!", filepath);
 //        return new ResponseEntity(standardResponse, HttpStatus.OK);
 //    }
+
+    @PutMapping(path = "/{state}/{vid}")
+    public ResponseEntity updateState(@PathVariable String state,@PathVariable String vid ) {
+        service.updateStatus(state,vid);
+        return new ResponseEntity(new StandardResponse("200", "Done", state), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "count/{state}")
+    public ResponseEntity bookingCount(@PathVariable String state) {
+        String booking = service.vehicleCount(state);
+        return new ResponseEntity(new StandardResponse("200", "Done", booking), HttpStatus.OK);
+    }
+
 }

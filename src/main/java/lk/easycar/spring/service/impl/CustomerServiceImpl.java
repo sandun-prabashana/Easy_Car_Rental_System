@@ -52,6 +52,27 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepo.getPassword(id);
     }
 
+    @Override
+    public CustomerDTO getDetail(String id) {
+        Customer c= customerRepo.getCustomerDetail(id);
+        return new CustomerDTO(c.getCNic(),c.getDL_No(),c.getName(),c.getAddress(),c.getPhone_No(),
+                c.getEmail_Address(),c.getPassword(),c.getID_Location(),c.getDL_Location());
+    }
+
+    @Override
+    public CustomerDTO searchCustomer(String cid) {
+        Optional<Customer> customer = customerRepo.findById(cid);
+        if (customer.isPresent()) {
+            return mapper.map(customer.get(), CustomerDTO.class);
+        }
+        return null;
+    }
+
+    @Override
+    public String getUserCount() {
+        return customerRepo.userCount();
+    }
+
 //
 
 

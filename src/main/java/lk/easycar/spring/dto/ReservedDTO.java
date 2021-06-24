@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 public class ReservedDTO {
     private String REID;
-    private Customer customer;
+    private CustomerDTO customer;
     private List<ReservedDetail> reservedDetail = new ArrayList<>();
 
 }

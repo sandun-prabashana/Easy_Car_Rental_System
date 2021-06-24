@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class ReservedDetailDTO {
     private Reserves_Vehicle_PK pk;
-    private Reserved reserved;
-    private Vehicle vehicle;
+    private ReservedDTO reserved;
+    private VehicleDTO vehicle;
     private double RentalFee;
     private double LDWFee;
     private int KmCount;

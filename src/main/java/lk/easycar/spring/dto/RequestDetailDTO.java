@@ -13,12 +13,13 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @Data
 public class RequestDetailDTO {
+
     private String RID;
-    private Customer customer;
+    private CustomerDTO customer;
     private String Vid;
-    private Driver driver;
-    private String DriverStatus;
+    private DriverDTO driver;
     private String BankSlip;
+    private String RequestDate;
     private String PickupDate;
     private String ReturnDate;
     private String RateType;

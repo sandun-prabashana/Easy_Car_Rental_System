@@ -71,5 +71,22 @@ public class CustomerController {
         return new ResponseEntity(new StandardResponse("200", "Done", password), HttpStatus.OK);
     }
 
+    @GetMapping(path = "need/{custid}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity searchVehicle(@PathVariable String custid) {
+        CustomerDTO customerDTO = service.getDetail(custid);
+        return new ResponseEntity(new StandardResponse("200", "Done", customerDTO), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "search/{cid}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity searchCustomer(@PathVariable String cid) {
+        CustomerDTO customerDTO = service.searchCustomer(cid);
+        return new ResponseEntity(new StandardResponse("200", "Done", customerDTO), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/count")
+    public ResponseEntity searchRID() {
+        String count= service.getUserCount();
+        return new ResponseEntity(new StandardResponse("200", "Done", count), HttpStatus.OK);
+    }
 
 }

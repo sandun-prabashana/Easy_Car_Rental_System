@@ -15,11 +15,11 @@ public class Schedule {
     private String SID;
 
     @ManyToOne
-    @JoinColumn(name = "DNic", referencedColumnName = "DNic")
+    @JoinColumn(name = "DNic")
     private Driver driver;
 
     @ManyToOne
-    @JoinColumn(name = "RID", referencedColumnName = "RID")
+    @JoinColumn(name = "RID")
     private RequestDetail requestDetail;
 
     private String date;

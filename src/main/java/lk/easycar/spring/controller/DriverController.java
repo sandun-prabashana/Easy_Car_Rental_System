@@ -3,6 +3,7 @@ package lk.easycar.spring.controller;
 import lk.easycar.spring.dto.CustomerDTO;
 import lk.easycar.spring.dto.DriverDTO;
 import lk.easycar.spring.dto.VehicleDTO;
+import lk.easycar.spring.entity.Driver;
 import lk.easycar.spring.exception.NotFoundException;
 import lk.easycar.spring.service.CustomerService;
 import lk.easycar.spring.service.DriverService;
@@ -57,5 +58,29 @@ public class DriverController {
     public ResponseEntity searchPasswordForNic(@PathVariable String email) {
         String password = service.GetPasswordForDNic(email);
         return new ResponseEntity(new StandardResponse("200", "Done", password), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "search/{did}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity searchCustomer(@PathVariable String did) {
+        DriverDTO driverDTO = service.searchDriver(did);
+        return new ResponseEntity(new StandardResponse("200", "Done", driverDTO), HttpStatus.OK);
+    }
+
+    @PutMapping(path = "status/{state}/{vid}")
+    public ResponseEntity updateState(@PathVariable String state,@PathVariable String vid ) {
+        service.updateStatus(state,vid);
+        return new ResponseEntity(new StandardResponse("200", "Done", state), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "need/{email}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity searchDriver(@PathVariable String email) {
+        DriverDTO driverDTO=service.searchDriverbyEmail(email);
+        return new ResponseEntity(new StandardResponse("200", "Done", driverDTO), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "count/{state}")
+    public ResponseEntity DriverCount(@PathVariable String state) {
+        String driver = service.DriverCount(state);
+        return new ResponseEntity(new StandardResponse("200", "Done", driver), HttpStatus.OK);
     }
 }

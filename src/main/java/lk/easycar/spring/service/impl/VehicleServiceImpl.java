@@ -69,5 +69,14 @@ public class VehicleServiceImpl implements VehicleService {
 
     }
 
+    @Override
+    public void updateStatus(String state, String id) {
+         vehicleRepo.updateStatus(state,id);
+    }
+
+    @Override
+    public String vehicleCount(String state) {
+        return vehicleRepo.vehicleCount(state);
+    }
 
 }

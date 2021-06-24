@@ -15,8 +15,8 @@ import javax.persistence.ManyToOne;
 @Data
 public class ScheduleDTO {
     private String SID;
-    private Driver driver;
-    private RequestDetail requestDetail;
+    private DriverDTO driver;
+    private RequestDetailDTO requestDetail;
     private String date;
     private String statues;
 }
